@@ -17,7 +17,7 @@ Follow these steps to set up the Comments App:
 Start by cloning the repository to your local machine:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/danylo-d/dzen_test_task.git
 ```
 Replace <repository-url> with the actual URL of the repository.
 
