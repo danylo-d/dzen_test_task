@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Comment System</title>
+    <!-- Include Bootstrap CSS from CDN -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        /* Custom styles can still be included if needed */
+        .reply-btn {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Main Content -->
+    <div id="content" class="container py-4">
+        {% block content %}
+        <!-- This content block will be overridden by child templates -->
+        {% endblock content %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center text-lg-start">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2024 Comment System: 
+            <a class="text-dark" href="#">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- JavaScript block that can be overridden by child templates -->
+    {% block javascript %}
+    {% endblock javascript %}
+</body>
+</html>

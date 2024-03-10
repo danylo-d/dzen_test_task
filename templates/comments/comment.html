@@ -1,0 +1,18 @@
+<!-- Use Bootstrap card for each comment -->
+<div class="card mb-3" style="margin-left: {{ depth|default:0 }}em;">
+    <div class="card-body">
+        <h5 class="card-title">Posted by: {{ comment.user.username }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Posted at: {{ comment.created_at }}</h6>
+        <p class="card-text">{{ comment.text }}</p>
+        <div>Rate: {{ comment.rate }}</div>
+        <a href="{% url 'comments:create_comment' %}?parent_id={{ comment.id }}" class="card-link">Reply</a>
+        <a href="{% url 'comments:comment-detail' pk=comment.id %}" class="card-link">Detail</a>
+    </div>
+    {% if comment.replies.all %}
+        <div class="card-footer">
+            {% for child in comment.replies.all %}
+                {% include "comments/comment.html" with comment=child depth=depth|default:0|add:1 %}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card mb-3">
+        <div class="card-body">
+            <p class="card-text">{{ comment.text }}</p>
+            <h6 class="card-subtitle mb-2 text-muted">Posted by: {{ comment.user.username }}</h6>
+            <p>Rate: {{ comment.rate }}</p>
+            <div class="d-flex">
+                <form action="" method="post" class="me-2">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="like">
+                    <button type="submit" class="btn btn-outline-primary btn-sm">Like</button>
+                </form>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="dislike">
+                    <button type="submit" class="btn btn-outline-danger btn-sm">Dislike</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h4>Replies:</h4>
+    <div class="list-group">
+        {% for child in child_comments %}
+            <div class="list-group-item">
+                <p class="mb-1">{{ child.text }}</p>
+                <small>Posted by: {{ child.user.username }}</small><br>
+                <small>Posted at: {{ child.created_at }}</small>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

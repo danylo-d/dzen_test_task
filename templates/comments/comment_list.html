@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <a href="{% url 'comments:create_comment' %}" class="btn btn-primary mb-3">Create New Comment</a>
+    <h2>Comments</h2>
+    {% for comment in comments %}
+        {% if not comment.parent %}
+            {% include "comments/comment.html" with comment=comment %}
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}
